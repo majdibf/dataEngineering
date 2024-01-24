@@ -1,0 +1,8 @@
+#Construire l'image docker à partir du Dockerfile
+docker build -t data-engineering .
+
+#créer un conteneur basé sur l'image "data-engineering"
+docker container create --name data-engineering-with-python data-engineering
+
+# se connecter au container
+docker exec -it data-engineerin-with-python /bin/bash
