@@ -3,7 +3,7 @@ FROM debian:12
 
 # Mise à jour des paquets et installation des outils de base
 RUN apt-get update && \
-    apt-get install -y vim wget curl tar && \
+    apt-get install -y vim wget curl tar procps && \
     apt-get install -y python3 python3-pip python3-venv && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -115,6 +115,8 @@ RUN psql --version
 
 # Autoriser les connexions de toutes les adresses IP avec un mot de passe
 RUN echo "host    all             all             0.0.0.0/0            md5" >> /etc/postgresql/15/main/pg_hba.conf
+RUN echo "listen_addresses = '*'" >> /etc/postgresql/15/main/postgresql.conf
+
 
 # Arrêt du serveur PostgreSQL
 RUN /etc/init.d/postgresql stop
