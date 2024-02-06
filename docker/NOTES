@@ -6,3 +6,9 @@ docker container create --name data-engineering-with-python data-engineering
 
 # se connecter au container
 docker exec -it data-engineerin-with-python /bin/bash
+
+# créer un venv pour le projet
+python3 -m venv venv
+
+# copier un fichier vers le container
+docker cp src_path container:dest_path
